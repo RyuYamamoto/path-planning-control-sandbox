@@ -1,6 +1,7 @@
 # coding: utf-8
 
 import math
+from re import M
 from typing import Tuple
 import matplotlib.pyplot as plt
 
@@ -39,6 +40,10 @@ class Node:
     self.position = position
     self.parent = parent
     self.g = g
+    self.h = 0
+    self.f = 0
+
+  # TODO
     self.h = 0
     self.f = 0
 
@@ -139,14 +144,17 @@ if __name__ == '__main__':
   fig = plt.figure()
   ax = fig.add_subplot(111)
   ax.set_aspect("equal")
-
-  for iy in range(0, 31):
-    for ix in range(0, 31):
-      if map[ix][iy] == -1:
-        ax.plot(ix, iy, marker='s', color='black')
-
+ 
   ax.plot(5, 5, marker='*', color='magenta')
   ax.plot(25,25, marker='*', color='green')
+
+  print(len(map))
+  print(len(map[0]))
+
+  for y in range(len(map[1])):
+    for x in range(len(map[0])):
+      if map[x][y] == -1:
+        plt.plot(x, y, marker="s", color="black")
 
   a_star.set_map(map)
   results, close_list = a_star.plan(start_x=5, start_y=5, goal_x=25, goal_y=25)
