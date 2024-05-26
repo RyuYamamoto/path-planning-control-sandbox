@@ -148,9 +148,6 @@ if __name__ == '__main__':
   ax.plot(5, 5, marker='*', color='magenta')
   ax.plot(25,25, marker='*', color='green')
 
-  print(len(map))
-  print(len(map[0]))
-
   for y in range(len(map[1])):
     for x in range(len(map[0])):
       if map[x][y] == -1:
